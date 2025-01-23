@@ -6,15 +6,17 @@ public class Matematicas{
      * * Montecarlo. El parámetro `pasos` indica el número de puntos
      * * generado.
      * */
-    public static double generarNumeroPiIterativo(long pasos){
-    int puntosCirculo = 0;
-        for (int i=0; i<pasos; i++){
-            double x = Math.random();
-            double y = Math.random();
-            if (x*x + y*y < 1){
-                puntosCirculo++;
-            }
+    public static double generarNumeroPiIterativo(long pasos,long contador){
+        
+        if(contador== 0){
+            return 0;
         }
-        return 4.0 * puntosCirculo / pasos;
+        double x = Math.random();
+        double y = Math.random();
+        if(x*x+y*y<=1){
+            return (double) 4/pasos + generarNumeroPiIterativo(pasos,contador-1);
+        }else{
+            return generarNumeroPiIterativo(pasos,contador-1);
+        }
     }
 }
