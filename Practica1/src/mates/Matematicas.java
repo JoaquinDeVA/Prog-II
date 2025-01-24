@@ -7,14 +7,14 @@ public class Matematicas{
      * * generado.
      * */
     public static double generarNumeroPiIterativo(long pasos){
-    int puntos = 0;
+    int puntosCirculo = 0;
         for (int i=0; i<pasos; i++){
             double x = Math.random();
             double y = Math.random();
             if (x*x + y*y < 1){
-                puntos++;
+                puntosCirculo++;
             }
         }
-        return 4.0 * puntos / pasos;
+        return 4.0 * puntosCirculo / pasos;
     }
 }
