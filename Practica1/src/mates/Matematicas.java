@@ -7,8 +7,8 @@ public class Matematicas{
      * * generado.
      * */
     public static double generarNumeroPiIterativo(long pasos){
-    int puntosCirculo = 0;
-        for (int i=0; i<pasos; i++){
+    long puntosCirculo = 0;
+        for (long i=0; i<pasos; i++){
             double x = Math.random();
             double y = Math.random();
             if (x*x + y*y < 1){
