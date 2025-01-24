@@ -1,5 +1,7 @@
 package mates;
 
+import java.util.stream.Stream;
+
 public class Matematicas{
     /**
      * * Genera una aproximación al número Pi mediante el método de
@@ -7,14 +9,12 @@ public class Matematicas{
      * * generado.
      * */
     public static double generarNumeroPiIterativo(long pasos){
-    int puntosCirculo = 0;
-        for (int i=0; i<pasos; i++){
-            double x = Math.random();
-            double y = Math.random();
-            if (x*x + y*y < 1){
-                puntosCirculo++;
-            }
-        }
+    long puntosCirculo = Stream
+        .generate(() -> new double[]{Math.random(),Math.random()})
+        .limit(pasos)
+        .filter(punto -> punto[0]*punto[0] + punto[1]*punto[1] <= 1)
+        .count(); 
+
         return 4.0 * puntosCirculo / pasos;
     }
 }
