@@ -193,6 +193,18 @@ Por ejemplo con 3 discos movemos el primero a destino y el segundo a auxiliar, a
 apilado en auxiliar permite que el tercer disco se mueva al destino. Usando el origen ahora podemos 
 volver a apilarlos en el destino.
 
+static void hanoi(int n, String inicio, String destino,String auxiliar){
+	if(n == 1){
+		mover(inicio,destino);
+	}
+	hanoi(n-1,inicio,auxiliar,destino);	
+	mover(inicio,destino);
+	hanoi(n-1,auxiliar,destino,inicio);
+}
+static void mover(String inicio, String destino){
+	System.out.println("Mover de" + inicio + "a" + destino);
+}
+
 
 Ejercicio 4. Escriba un método recursivo con la siguiente cabecera:
 
