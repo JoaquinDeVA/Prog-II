@@ -8,11 +8,16 @@ public class Matematicas{
      * */
     public static double generarNumeroPiIterativo(long pasos){
     long puntosCirculo = 0;
+    int j = 1;
         for (long i=0; i<pasos; i++){
             double x = Math.random();
             double y = Math.random();
-            if (x*x + y*y < 1){
+            if (x*x + y*y <= 1){
                 puntosCirculo++;
+            }
+            if( i >= (pasos-1)*j/10){
+                System.out.println("Has alcanzado el: " + (j*10) + "%");
+                j++;
             }
         }
         return 4.0 * puntosCirculo / pasos;
