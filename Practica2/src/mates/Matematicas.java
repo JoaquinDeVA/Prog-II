@@ -6,24 +6,26 @@ public class Matematicas{
      * * Montecarlo. El parámetro `pasos` indica el número de puntos
      * * generado.
      * */
-    public static double generarNumeroPiRecursivo(long pasos){
+    public static double generarNumeroPiRecursivo(int pasos){
         if(pasos<0){
             throw new IllegalArgumentException("El numero de pasos debe ser positivo o 0");
         }
-        return auxiliarNumeroPiRecursivo(pasos,pasos);
+        return auxiliarNumeroPiRecursivo(pasos,0);
     }
-    private static double auxiliarNumeroPiRecursivo(long pasos,long contador){
+
+    private static double auxiliarNumeroPiRecursivo(int pasos,int resul){
        
-        if(contador == 0){
-            return 0;
+        if(pasos == 0){
+            return (double) ((4*resul)/pasos);
         }
         double x = Math.random();
         double y = Math.random();
         if(x*x+y*y<=1){
-            return (double) 4/pasos + auxiliarNumeroPiRecursivo(pasos,contador-1);
+            return auxiliarNumeroPiRecursivo(pasos - 1, resul++);
         }else{
-            return auxiliarNumeroPiRecursivo(pasos,contador-1);
+            return auxiliarNumeroPiRecursivo(pasos - 1, resul);
         }
-    }  
-    
+    }
 }
+
+
