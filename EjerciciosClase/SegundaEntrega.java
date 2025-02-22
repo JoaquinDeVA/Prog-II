@@ -47,8 +47,13 @@ public class SegundaEntrega {
             
             return 1; 
         }
+        int PotMitad= potenciaN(base, n/2);
+        if( n % 2 == 0){
+            
+            return PotMitad * PotMitad;
+        }
 
-        return base * potenciaN(base, n-1);
+        return base * PotMitad * PotMitad;
     }
 
 
@@ -448,7 +453,7 @@ La cabecera del método será la que se muestra a continuación: */
         hanoi(3, "A", "C", "B");  // Expected moves between A, B, and C
                 
         // Test integralEXCuadrado function
-        System.out.println("Integral de e^(x^2) entre 0 y 1 con h = 0.01: " + integralEXCuadrado(0, 1, 0.01));
+        System.out.println("Integral de e^(x^2) entre 0 y 1 con h = 0.1: " + integralEXCuadrado(0, 1, 0.1));
                 
         // Test sumaCodigos function
         System.out.println("Suma de los códigos ASCII de 'abc': " + sumaCodigos("abc"));  // Expected 294
