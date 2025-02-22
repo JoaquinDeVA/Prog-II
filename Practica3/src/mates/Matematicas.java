@@ -10,10 +10,9 @@ public class Matematicas{
      * */
     public static double generarNumeroPiIterativo(long pasos){
     long puntosCirculo = Stream
-        .generate(() -> new double[]{Math.random(),Math.random()})
-        .limit(pasos)
-        .filter(punto -> punto[0]*punto[0] + punto[1]*punto[1] <= 1)
-        .count(); 
+    .generate(()-> new double[]{Math.random(), Math.random()})
+    .limit(pasos).filter((w) -> w[0]*w[0] + w[1]*w[1] <= 1)
+    .count();
 
         return 4.0 * puntosCirculo / pasos;
     }
