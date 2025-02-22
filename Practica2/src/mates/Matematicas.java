@@ -10,21 +10,21 @@ public class Matematicas{
         if(pasos<0){
             throw new IllegalArgumentException("El numero de pasos debe ser positivo o 0");
         }
-        return auxiliarNumeroPiRecursivo(pasos,0);
+        return (double) auxiliarNumeroPiRecursivo(pasos,0)/pasos;
     }
 
-    private static double auxiliarNumeroPiRecursivo(int pasos,int resul){
+    private static long auxiliarNumeroPiRecursivo(int pasos,int resul){
        
         if(pasos == 0){
-            return (double) ((4*resul)/pasos);
+            return  (4*resul);
         }
         double x = Math.random();
         double y = Math.random();
         if(x*x+y*y<=1){
-            return auxiliarNumeroPiRecursivo(pasos - 1, resul++);
-        }else{
-            return auxiliarNumeroPiRecursivo(pasos - 1, resul);
+            resul++;
         }
+        return auxiliarNumeroPiRecursivo(pasos - 1, resul);
+        
     }
 }
 
