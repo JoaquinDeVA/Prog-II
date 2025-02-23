@@ -1,5 +1,5 @@
 
-# PI lambda/streams
+# PI generado a traves de expresiones lambda y streams
 
 ## Descripción
 
