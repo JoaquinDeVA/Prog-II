@@ -1,4 +1,5 @@
-package TerceraEntrega;
+package terceraEntrega;
+
 
 import java.util.stream.*;
 import java.util.*;
@@ -16,10 +17,15 @@ public class TerceraEntrega{
 tal forma que sea aplicable a diferentes funciones reales de variable real. La
 cabecera el método ha de ser la que se muestra a continuación: */
 
-    public static double integral(double a, double b, double h,Function<Double, Double> funcion){
+  
+public static double integralA(double a, double b, double h,Function<Double, Double> funcion){
       
+    if ( a >= b){
         return 0;
     }
+    return funcion.apply(a)*h + integralA(a+h, b, h, funcion);
+}
+
 
 /* Ejercicio 14. Resuelva los siguientes apartados:
 1. Genere un stream de números mediante el método estático of de la
@@ -75,7 +81,7 @@ inclusive, mediante expresiones lambda y streams */
             return 0;
         }
 
-        return IntStream.generate(() -> base).limit(n).reduce(1,(total,w) -> total * w);
+        return IntStream.range(0, n).reduce(1,(total,w) -> total * base);
     }
 
     public static int sumaLista(List<Integer> lista){
@@ -114,8 +120,7 @@ inclusive, mediante expresiones lambda y streams */
 
     public static List<Integer> listaPares (List<Integer> lista){ // Elementos de la lista que son pares
 
-        Stream<Integer> listaS = lista.stream();
-        return listaS.filter((w) -> w % 2 == 0).toList();
+        return lista.stream().filter((w) -> w % 2 == 0).toList();
     }
 
     public static List<Integer> listaParesHastaN (int n){ //Lista de los numeros pares hasta n
@@ -138,11 +143,32 @@ inclusive, mediante expresiones lambda y streams */
         .map((f) -> f[0])
         .reduce(0,(resul,w) -> w);
     }
+    
+    
+    
+    
 
+
+
+
+    
+    
+    /*Ejercicio 16. Resuelva el ejercicio 13 utilizando, no sólo expresiones lambda
+sino también streams */
+
+    public static double integral(double a, double b, double h,Function<Double, Double> funcion){
+      
+        return Stream.iterate( new double[]{a,a+h},(w) -> new double[]{w[1],w[1]+h})
+        .takeWhile((w) -> w[0] <= b)
+        .map((w) -> funcion.apply(w[1]) * h)
+        .reduce(0.0,(resul,w) -> resul + w);
+    }
 
 
 
     public static void main(String[] args){
+
+        System.out.println("Integral de 0 a 10 y = x^2: " + integralA(0, 10, 0.1, (w) -> w*w));
 
         System.out.println("Suma de los primeros 10 elementos : " + sumaN(10));
 
@@ -174,5 +200,8 @@ inclusive, mediante expresiones lambda y streams */
         System.out.println("Producto escalar de dos listas : " + productoEscalar(lista,lista2));
 
         System.out.println("El elemento numero 8 de la serie de fibonacci: " + fibonacciN(8));
+
+        System.out.println("Integral de 0 a 10 y = x^2: " + integral(0, 10, 0.1, (w) -> w*w));
+
     }
 }

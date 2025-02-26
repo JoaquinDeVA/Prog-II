@@ -1,4 +1,5 @@
-package TerceraEntrega;
+package terceraEntrega;
+
 
 import java.util.*;
 import java.util.stream.*;

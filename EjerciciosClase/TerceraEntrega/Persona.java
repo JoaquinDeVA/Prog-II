@@ -1,4 +1,4 @@
-package TerceraEntrega;
+package terceraEntrega;
 
 import java.time.LocalDate;
 
