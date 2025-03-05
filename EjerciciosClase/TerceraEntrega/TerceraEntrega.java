@@ -26,6 +26,16 @@ public static double integralA(double a, double b, double h,Function<Double, Dou
     return funcion.apply(a)*h + integralA(a+h, b, h, funcion);
 }
 
+public static double integralB(double a, double b, double h,Function<Double, Double> funcion){
+
+    double resul = 0;
+    while(a < b){
+
+        resul += funcion.apply(a)*h;
+        a += h;
+    }
+    return resul;
+}
 
 /* Ejercicio 14. Resuelva los siguientes apartados:
 1. Genere un stream de números mediante el método estático of de la
@@ -169,6 +179,8 @@ sino también streams */
     public static void main(String[] args){
 
         System.out.println("Integral de 0 a 10 y = x^2: " + integralA(0, 10, 0.1, (w) -> w*w));
+        System.out.println("Integral de 0 a 10 y = x^2: " + integralB(0, 10, 0.1, (w) -> w*w));
+
 
         System.out.println("Suma de los primeros 10 elementos : " + sumaN(10));
 
