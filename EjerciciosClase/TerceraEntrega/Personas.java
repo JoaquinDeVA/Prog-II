@@ -19,7 +19,7 @@ public class Personas {
 
     public Persona elMasJoven(){
 
-        return personas.stream().min(Comparator.comparingInt((w) -> (int) (w.calcularEdad())))
+        return personas.stream().min(Comparator.comparingLong((w) -> (w.calcularEdad())))
         .orElseThrow(() -> new IllegalStateException("No hay personas"));
     }
 
@@ -38,7 +38,7 @@ public class Personas {
         return  IntStream
         .range(0,personas.size())
         .map((i) -> (int) personas.get(i).calcularEdad())
-        .max()
+        .min()
         .orElseThrow(() -> new IllegalStateException("No hay personas"));
     }
 

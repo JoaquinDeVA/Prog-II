@@ -58,7 +58,12 @@ de la clase Random. */
 
 Random generator = new Random();
 DoubleStream numerosRandom = generator.doubles(); 
+    
+public double  practica(){
 
+    return new Random().doubles().reduce((total,w)-> total + w)
+    .orElseThrow(() -> new IllegalArgumentException("No hay elementos en la media"));
+}
 
 
 
@@ -81,7 +86,7 @@ inclusive, mediante expresiones lambda y streams */
             throw new IllegalArgumentException("El valor de n debe ser mayor o igual a 0");
         }
 
-        return IntStream.range(1, n +1).reduce(1,(total,w) -> total * w);
+        return IntStream.rangeClosed(1, n).reduce(1,(total,w) -> total * w);
     }
 
     public static int potenciaN(int base, int n){
@@ -92,6 +97,7 @@ inclusive, mediante expresiones lambda y streams */
         }
 
         return IntStream.range(0, n).reduce(1,(total,w) -> total * base);
+        // Alternativa :return IntStream.generate(() -> base).limit(n).reduce(1,(total,w) -> total * w);
     }
 
     public static int sumaLista(List<Integer> lista){
@@ -100,8 +106,7 @@ inclusive, mediante expresiones lambda y streams */
             throw new IllegalArgumentException("La lista no debe ser nula");
         }
 
-        Stream<Integer> listaS = lista.stream();
-        return listaS.reduce(0,(total,w) -> total + w);
+        return lista.stream().reduce(0,(total,w) -> total + w);
     }
 
     public static double mediaLista(List<Integer> lista){
@@ -145,22 +150,17 @@ inclusive, mediante expresiones lambda y streams */
         // hasta size ya que no esta incluido (generamos indice), y aplicamos transformacion con map
     }
 
-    public static int fibonacciN (int n){
+    public static long fibonacciN (int n){
 
         return Stream
-        .iterate(new int[]{0,1},(f) -> new int[]{f[1], f[0] + f[1]})
+        .iterate(new long[]{0,1},(f) -> new long[]{f[1], f[0] + f[1]})
         .limit(n)
-        .map((f) -> f[0])
-        .reduce(0,(resul,w) -> w);
+        .map((f) -> f[1])
+        .reduce((resul,w) -> w)
+        .orElseThrow();
     }
     
     
-    
-    
-
-
-
-
     
     
     /*Ejercicio 16. Resuelva el ejercicio 13 utilizando, no sólo expresiones lambda
@@ -170,7 +170,7 @@ sino también streams */
       
         return Stream.iterate( new double[]{a,a+h},(w) -> new double[]{w[1],w[1]+h})
         .takeWhile((w) -> w[0] <= b)
-        .map((w) -> funcion.apply(w[1]) * h)
+        .map((w) -> funcion.apply(w[0]) * h)
         .reduce(0.0,(resul,w) -> resul + w);
     }
 
