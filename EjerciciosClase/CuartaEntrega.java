@@ -13,7 +13,7 @@ la suma de los n primeros números naturales. */
 
 public static int sumaN (int n){ //Al parecer ambas funciones tienen la misma gramatica en C++
 	
-	resul = 0;
+	int resul = 0;
 	
 	while ( n > 0){
 		resul += n;
