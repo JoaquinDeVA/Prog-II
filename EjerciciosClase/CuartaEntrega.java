@@ -30,7 +30,9 @@ public static int sumaNRecursivo (int n){
 	return n + sumaNRecursivo(n - 1);
 }
 
-/*36. Defina O(n) en términos de un límite de cociente de funciones. -> f(x)/n = k donde k es un entero */
+/*36. Defina O(n) en términos de un límite de cociente de funciones. 
+
+f(x)/x = k donde k es un entero */
 	
 	
 	
@@ -59,6 +61,7 @@ Tiene una complejidad de O(1) */
 	
 	
 /*39. Calcule la complejidad temporal de los algoritmos del ejercicio 35.
+
 Ambas tienen una complejidad de O(n). Para una entrada n se ejecutaran n pasos*/
 	
 	
@@ -102,7 +105,7 @@ su complejidad temporal.
         int suma = 0;
         for(int num : lista){
             
-            suma +=  num;
+            suma +=  num;   
         }
         return suma;
     }
@@ -138,7 +141,7 @@ su complejidad temporal.
         return Math.sqrt(resultado/lista.size()- 1);
     }
 
-    public static int sumaPares(int n){ //Suma de los primeros elementos pares hasta n: O(n)
+    public static int sumaPares(int n){ //Suma de los primeros elementos pares hasta n: O(n) , T(n/2)
 
         int resul = 0;
 
@@ -213,7 +216,7 @@ su complejidad temporal.
 
 
 
-    public static long FibonacciN(int n){ // n termino de la serie de Fibonacci: O(n)
+    public static long FibonacciN(int n){ // n termino de la serie de Fibonacci: O(n) -> (version iterativa) 
 
         long a= 0;
         long b = 1;
@@ -233,12 +236,7 @@ su complejidad temporal.
 	
 	
 	
-	
-	
-	
-	
-	
-	
+
 	
 /*41. Calcule la complejidad temporal y espacial de cualquiera de los algoritmos (recursivos) del ejercicio 2
  (salvo los referentes a la serie de Fibonacci). Compare dichas complejidades con el algoritmo iterativo para
@@ -418,7 +416,7 @@ public static int sumaN(int n){  //Suma de n terminos positivos: O(n)
         return resultado;
     }
 
-    public static List<Integer> listaParN(int n){
+    public static List<Integer> listaParN(int n){   //Lista de pares hasta n O(n)
         
         if(n < 0){
             
@@ -433,7 +431,7 @@ public static int sumaN(int n){  //Suma de n terminos positivos: O(n)
         
         return auxliarListaParN(n, 2, new ArrayList<>());
     }
-    private static List<Integer> auxliarListaParN(int n,int indice,List<Integer> resul){
+    private static List<Integer> auxliarListaParN(int n,int indice,List<Integer> resul){    
 
         if(indice > n){
             return resul;
@@ -530,11 +528,33 @@ En el peor de los casos tiene complejidad O(log(n)), en el mejor O(1) y de prome
 	
 /*45. Escriba un algoritmo recursivo para buscar un número en un
 array ordenado de enteros. Su cabecerá será la misma que la del ejercicio 43.
-Calcule su complejidad en el caso peor*/
-	
-	
-	
-	
+Calcule su complejidad en el caso peor
+
+
+public static boolean buscarR(int e,int[] array){
+
+    return buscarRauxiliar(e, array,0,array.length);
+}
+
+private static boolean buscarRauxiliar(int e,int[] array,int izq,int dch){
+
+    if(izq > dch){
+        return false;
+    }
+
+    
+    int medio = (dch-izq)/2;
+    
+
+    if(e == array[medio]){
+        return true;
+    }else if(e > array[medio]){
+        return buscarRauxiliar(e,array,medio + 1,dch);
+    }else if(e < array[medio]){
+        return buscarRauxiliar(e,array,izq,medio - 1);
+    }
+}
+*/	
 	
 /*46. Calcule las complejidades temporal y espacial del algoritmo
 recursivo para calcular el elemento n-ésimo de la sucesión de Fibonacci
