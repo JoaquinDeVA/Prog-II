@@ -554,12 +554,14 @@ private static boolean buscarRauxiliar(int e,int[] array,int izq,int dch){
         return buscarRauxiliar(e,array,izq,medio - 1);
     }
 }
+
+En el peor de los casos tiene complejidad O(log(n)), en el mejor O(1) y de promedio O(log(n))
 */	
 	
 /*46. Calcule las complejidades temporal y espacial del algoritmo
 recursivo para calcular el elemento n-ésimo de la sucesión de Fibonacci
 
-La serie de fibonacci tendra una complejidad temporal de O(2^n) y espacial de O(n)*/
+La serie de fibonacci tendra una complejidad temporal de O(2^n) y espacial de O(n) ya que en un momento dado podemos tener maximo n llamadas en la pila*/
 	
 	
 	
