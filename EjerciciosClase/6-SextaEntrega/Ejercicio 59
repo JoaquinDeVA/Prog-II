@@ -1,0 +1,33 @@
+La secuencia de tests y de versiones del método a desarrollar según
+TDD que culmine con el método implementado que pase todos los
+tests. En la respuesta del estudiante debe quedar claro qué versión del
+software hace pasar cada test.
+
+Crearemos el primer test que sirve para comprobar resultados:
+
+import java.util.Stack;
+
+@Test
+public void pruebaSumaRecursivaElementosPila(){
+
+	Stack<Integer> pila = Stream.iterate(1,w-> w+1).limit(10).collect(Collectors.toCollection(Stack::new));
+	//Stack con los primeros 10 numeros
+
+	int resul =	ejercicios.SumaRecursivaElementosPila(pila);
+	
+	assertEquals(55,resul);		//Comprueba como se comporta para una entrada valida
+	
+	Stack<Integer> pila2;					
+	resul =	ejercicios.SumaRecursivaElementosPila(pila2); //Comprueba que pasa para una pila vacia
+	assertEquals(0,resul);
+}
+
+La primera version de nuestro codigo fallaria ambos test. Tras escribir correctamente el metodo recursivo
+(metodo de parada .empty() y devolviendo el elemento mas la llamada de normal) tendriamos la primera version que 
+aprueba el primer test y falla el segundo.
+
+Ya en la segunda version nos dedicariamos a tener en cuenta posibles problemas generados por una entrada diferente a
+la esperada. Aprobando asi el segundo test tambien.
+
+
+Este algoritmo tendria una complejidad O(n) ya que para cada elemento de la pila necesitamos una llamada.
