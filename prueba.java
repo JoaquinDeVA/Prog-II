@@ -9,17 +9,57 @@ public class prueba{
 
     public static void main(String[] args){
      
-        System.out.println(iterativo("Cancer"));
-        System.out.println(recursivo("Cancer"));
-        System.out.println(streams("Cancer"));
+        System.out.println(iterativo(3000000));
+        System.out.println(recursivo(3000));
+        System.out.println(streams(3000));
     }
 
 
+	public static double iterativo( long pasos){
+		
+		double resul = 0.0;
+
+		for (int i = 0; i< pasos; i++){
+
+			double x = Math.random();
+			double y = Math.random();
+
+			if(x*x + y*y <= 1){
+				resul += 1;
+			}
+		}
+
+		return resul*4/pasos;
+	}
+
+	public static double recursivo(long pasos){
 
 
+		return auxliarRecursivo(pasos,0,0.0);
+	}
+
+	private static double auxliarRecursivo(long pasos, int indice, double resul){
+
+		if (indice == pasos){
+
+			return 4*(resul/indice);
+		}
+
+		double x = Math.random();
+		double y = Math.random();
+
+		if(x*x + y*y <= 1){
+			resul ++;
+		}
+		return auxliarRecursivo(pasos, indice + 1 , resul);
+	}
 
 
+	public static double streams(long pasos){
 
+		double puntos = Stream.generate(() -> new double[]{Math.random(),Math.random()} ).limit(pasos).filter(w -> w[0]*w[0] + w[1]*w[1] <= 1).count();
+		return 4* puntos/ pasos;
+	}
 
 
 
@@ -77,6 +117,15 @@ public class prueba{
 
 
 
+
+
+
+
+
+
+
+
+	t
 
 
 
