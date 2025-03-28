@@ -1,6 +1,6 @@
 Ejercicio 61. Explique la diferencia entre tipo abstracto de datos (TAD) y estructura de datos.
 
-Mientras que el TAD es una referencia generica a un tipo de dato y los métodos con los que trabaja la
+Mientras que el TAD es una referencia generica a un tipo de dato y los métodos con los que trabaja, la
 estructura es su implementacion concreta para formar el comportamiento esperado.
 
 
@@ -75,7 +75,7 @@ import java.util.Stack;
 			System.out.println(pila);
 		}
 	}
-Se añaden los valores 1 y 2, se imprime la pila completa (1,2), se imprime el valor en la cima con peek() y se retira con pop(). De nuevo se imprime la pila.
+Se añaden los valores 1 y 2, se imprime la pila completa (1,2), se imprime el valor en la cima con peek() [2] y se retira con pop(). De nuevo se imprime la pila [1].
 
 
 
@@ -91,6 +91,11 @@ El propio sistema usa colas para determinar la cola de prioridad de ejecucion. T
 entre elementos. Una cola de mensajes.
 
 Ejercicio 73. Examine el código de la clase ArrayDequeue.java y explique cómo aplica la aritmética modular.
+
+Por su caracteristica ciclica, en la que no hay un verdadero inicio y fin del array,
+tomamos constancia de la vuelta que damos tomando el modulo resultante de la nueva posicion entre la capacidad de array.
+De tal manera que cuando alcanzamos el final de nuestro espacio de memoria volvemos a empezar de nuevo.
+
 
 
 Ejercicio 74. Ejecute y explique el siguiente código, y compare su comportamiento con el programa del ejercicio 69:
@@ -108,3 +113,6 @@ public class DemoColas{
 		System.out.println(cola);
 	}
 }
+
+Se crea una cola y se añaden los elementos 1 y 2. Se imprimen estos valores por pantalla como [1,2], se muestra el valor al frente de la cola
+en este caso el [1] y de nuevo lo mismo pero .poll lo retira. Finalmente se muestra la cola [2]

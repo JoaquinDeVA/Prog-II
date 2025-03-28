@@ -6,7 +6,7 @@ import java.util.stream.*;
 public class Personas {
     
     private ArrayList<Persona> personas;
-
+    
     public Personas(){
 
         personas = new ArrayList<>();
@@ -26,12 +26,14 @@ public class Personas {
 
     public long calcularSumaEdades(){
 
-        return IntStream
+       /*  return IntStream
         .range(0,personas.size())
         .map((i) -> (int) personas.get(i).calcularEdad())
         .reduce((acumulador,w) -> acumulador + w)
         .orElseThrow(() -> new IllegalStateException("No hay personas"));
-    }
+    */
+        return personas.Stream().mapToInt(w-> w.calcularEdad()).sum();
+        }
 
     public long calcularEdadMinima(){
 
