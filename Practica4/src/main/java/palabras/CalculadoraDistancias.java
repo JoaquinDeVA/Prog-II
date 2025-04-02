@@ -5,7 +5,7 @@ public class CalculadoraDistancias {
      * Calcula la distancia de edición, tal y como la expone
      * Jurafsky entre las cadenas `s1` y `s2`.
      * 
-     * @param s1,s2 S
+     * @param s1,s2 
      */
     public static int calcularDistancia(String s1, String s2) {
         
@@ -38,6 +38,6 @@ public class CalculadoraDistancias {
                 }
             }
         }
-        return dp[m][n];
+        return dp[m][n]; 
     }
 }
