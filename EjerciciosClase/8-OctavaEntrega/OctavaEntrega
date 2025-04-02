@@ -1,0 +1,25 @@
+Ejercicio 105. Explique qué es una función hash.
+Una funcion que transforma, mediante un algoritmo, una entrada en una salida unica asociada a el valor de entrada y de tamaño fijo
+
+Ejercicio 106. Explique qué función hash utiliza Java para objetos de la clase Integer.
+Usa el propio valor numerico que representa.
+
+Ejercicio 107. Explique qué función hash utiliza Java para objetos de la clase String.
+
+
+Ejercicio 108. Explique cómo puede implementarse un map mediante hashing
+
+
+Ejercicio 109. Explique cómo puede implementarse un conjunto mediante hashing.
+
+
+Ejercicio 110. Explique por qué Java aumenta el tamaño máximo de una tabla hash antes de que se llene.
+
+
+Ejercicio 111. Explique por qué Java recoloca los elementos de una tabla hash cuando ésta aumenta de tamaño.
+
+
+Ejercicio 112. Explique por qué es conveniente especificar el tamaño inicial de una HashSet o de un HashMap cuando se espera que éste sea grande.
+
+
+Ejercicio 113. ¿Qué consecuencias tiene el no reescribir el método hashCode cuando se define un tipo de elemento para un HashSet o HashMap?
