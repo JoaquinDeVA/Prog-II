@@ -6,41 +6,44 @@ public class CalculadoraDistancias {
         int m = s1.length();
         int n = s2.length();
 
-        // Initialize the dp table with -1 to indicate uncomputed values
+        // Inicializamos a -1 para indicar que el valor no ha sido calculado
         int[][] dp = new int[m + 1][n + 1];
         for (int i = 0; i <= m; i++) {
+            
             for (int j = 0; j <= n; j++) {
-                dp[i][j] = -1; // Initialize with -1 to indicate that the value has not been computed yet
+                
+                dp[i][j] = -1; 
             }
         }
-
-        // Start the recursion from the full strings (i.e., i = m, j = n)
-        return calcularRecursivo(s1, s2, dp, m, n);
+        return auxiliarCalcularDistancia(s1, s2, dp, m, n);
     }
 
-    // Recursive function with memoization
-    private static int calcularRecursivo(String s1, String s2, int[][] dp, int i, int j) {
-        // Base cases: if one string is empty, the distance is the length of the other string
+
+    private static int auxiliarCalcularDistancia(String s1, String s2, int[][] dp, int i, int j) {
+       
+        //Para palabras vacias
         if (i == 0) {
-            return j;  // If s1 is empty, we need to insert all characters of s2
+           
+            return j;  
         }
         if (j == 0) {
-            return i;  // If s2 is empty, we need to remove all characters of s1
+            
+            return i;  
         }
 
-        // Check if the value has already been computed
+        // Comprobar si nuestro valor ha sido calculado previamente
         if (dp[i][j] != -1) {
             return dp[i][j];
         }
 
-        // If characters match, no operation is needed, so we move diagonally
         if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-            dp[i][j] = calcularRecursivo(s1, s2, dp, i - 1, j - 1);
+           
+            dp[i][j] = auxiliarCalcularDistancia(s1, s2, dp, i - 1, j - 1);
         } else {
-            // Compute the minimum cost between the three possible operations: insertion, deletion, substitution
-            int insertion = calcularRecursivo(s1, s2, dp, i, j - 1) + 1;
-            int deletion = calcularRecursivo(s1, s2, dp, i - 1, j) + 1;
-            int substitution = calcularRecursivo(s1, s2, dp, i - 1, j - 1) + 1;
+
+            int insertion = auxiliarCalcularDistancia(s1, s2, dp, i, j - 1) + 1;
+            int deletion = auxiliarCalcularDistancia(s1, s2, dp, i - 1, j) + 1;
+            int substitution = auxiliarCalcularDistancia(s1, s2, dp, i - 1, j - 1) + 1;
             dp[i][j] = Math.min(insertion, Math.min(deletion, substitution));
         }
 
