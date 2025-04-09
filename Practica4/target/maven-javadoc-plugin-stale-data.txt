@@ -1,0 +1,41 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/Joaco/Desktop/DOCUMENTOS/UNI/1º-segundoS/prog2/Prog-II/Practica4/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Joaco/Desktop/DOCUMENTOS/UNI/1º-segundoS/prog2/Prog-II/Practica4/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Calcular-Distancia 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Calcular-Distancia 1.0-SNAPSHOT API'
+aplicacion
+palabras
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\src\main\java = 1743582802009
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\allclasses-index.html = 1744183405508
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\allpackages-index.html = 1744183405535
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\element-list = 1744183405367
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\help-doc.html = 1744183405586
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\index-all.html = 1744183405568
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\index.html = 1744183405488
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\member-search-index.js = 1744183405544
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\module-search-index.js = 1744183405538
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\overview-summary.html = 1744183405577
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\overview-tree.html = 1744183405480
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\package-search-index.js = 1744183405540
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\search.html = 1744183405573
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\tag-search-index.js = 1744183405547
+C:\Users\Joaco\Desktop\DOCUMENTOS\UNI\1º-segundoS\prog2\Prog-II\Practica4\target\reports\apidocs\type-search-index.js = 1744183405542
