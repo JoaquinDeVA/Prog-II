@@ -1,0 +1,135 @@
+Ejercicio 75. Explique apoyándose en un ejemplo cómo funciona el método de inserción directa.
+
+Dado el array [3,1,4] el algoritmo crea un subarray ordenado. Comienza con el 3 como su subarray.
+[[3],1,4]. Procede a introducir el siguiente elemento, aumenta su tamaño en uno y procede a ordenadar este nuevo elemento.
+Para ello compara con el elemento a la izquierda hasta que este sea menor o no queden elementos.
+
+[[3,1],4] , es 1 > 3? nada:intercambiarlos . [[1,3],4] . Quedan elementos a la izquierda? seguir:parar.
+
+finalmente : [1,3,4] es 4>3?nada:intercambiarlos. Finaliza.
+
+
+Ejercicio 76. Calcule la complejidad asintótica temporal para el peor caso del método de inserción directa.
+
+En el peor de los casos tenemos una complejidad O(n^2) ya que para cada elemento de nuestro array original
+recorremos el nuevo array hasta el final. Esto se da cuando la lista esta ordenada al reves.
+ 
+ 
+Ejercicio 77. ¿Cuándo se usa el método de inserción directa? Justifique la respuesta.
+
+Cuando el numero de elementos a ordenadar no es muy elevado y/o los datos ya estan parcialmente ordenados.
+Es mas eficiente que algoritmos mas complejos para numeros bajos y cuando los datos estan algo ordenados tarda menos ya que no debe recorrer
+mas la lista una vez el elemento ha encontrado su lugar.
+	
+
+Ejercicio 78. Explique el código del algoritmo de inserción directa proporcionado por el libro que aparece en la bibliografía básica de la asignatura.
+
+Recorre con el indice i todo el array. En cada iteracion guarda el valor de [i]. Procede a compararlo con el array, desde i-1 (con otro indice)
+mientras sea menor y haya mas elementos. Si no se rompe la condicion mueve los elementos a j+1. Cuando Encontramos el lugar el bucle j se rompe
+y guardamos en j+1 el elemento.
+
+Ejercicio 79. Explique apoyándose en un ejemplo cómo funciona el método mergesort. ¿A quién se atribuye la invención del método?
+
+Jhon von Neumann.
+
+El algoritmo divide el array en dos mitades el array original. Las ordena y luego las une de nuevo. Para hacer la ordenacion se llama
+a si mismo recursivamente. Cuanto tenga n elementos sera capaz de ordenarse y parar de llamarse a si mismo. Por ejemplo, con dos elementos 
+podemos compararlos directamente y colocarlos de manera acorde. Luego comienza a resolver las llamadas y, por lo tanto, a ordenarse, para
+ello usa dos indices.
+
+Ejercicio 80. Calcule la complejidad asintótica temporal para el peor caso del método mergesort.
+
+En el peor de los casos tiene complejidad O(log(n)*n), el numero de divisiones siempre sera log(n) y la ordenacion de los elementos es 
+recorrelos, n elementos.
+
+Ejercicio 81. Explique el código del algoritmo mergesort proporcionado por el libro que aparece en la bibliografía básica de la asignatura.
+
+Recibe un array, lo divide, y llama a ordenarlos, finalmente llama a unirlos. Para ordenarlos hemos dicho que se llama a si mismo,
+hasta que el array tenga menos de dos elementos, caso en el que ya esta ordenado. Para unirse se recorre con dos indices y se compara.
+El menor de los dos valores se añade y se aumenta su indice hasta que hemos terminado de recorrer cualquiera de los dos. Caso en el que 
+añadimos ya los elementos restantes.
+
+Ejercicio 82. Realice los siguientes apartados sobre el algoritmo timsort:
+1. Explique qué es un run.
+2. Explique qué es el minrun.
+3. Explique a partir de un ejemplo cómo funciona el algoritmo de inserción binaria.
+4. Explique con ejemplos cómo funciona el timsort.
+5. ¿Quién inventó el algoritmo?
+6. ¿Qué complejidad tiene?
+
+Timsort es un algoritmo de ordenamiento eficiente inventado por Tim Peters en 2002,
+ que combina inserción binaria y mergesort. Se basa en detectar subsecuencias ordenadas llamadas runs, 
+ que se extienden hasta alcanzar una longitud mínima conocida como minrun (entre 32 y 64 elementos). 
+ Una vez extendidos, estos runs se fusionan de forma eficiente manteniendo el orden. 
+ La inserción binaria se usa para optimizar la colocación de elementos en pequeños runs mediante búsqueda 
+ binaria en lugar de comparación lineal. Timsort es especialmente eficaz con datos parcialmente ordenados 
+ y presenta una complejidad de O(n log n) en el peor caso y O(n) en el mejor caso. 
+ Es el algoritmo usado por defecto en Java para ordenar objetos.
+
+
+
+Ejercicio 83 y 84. Explique apoyándose en un ejemplo cómo funciona el método quicksort. ¿Quién inventó el método?.
+ Explique el código del algoritmo quicksort proporcionado por el libro que aparece en la bibliografía básica de la asignatura.
+
+
+Quicksort es un algoritmo de ordenamiento muy eficiente basado en la estrategia divide y vencerás.Fue inventado por Tony Hoare.
+Toma un elemento como pivote y en base a el ordena los elementos mayores y menores a el elemento en dos sub arreglos.
+Tras ordenar estos elementos simplemente une las listas. Para ordenar los elementos se llama a si mismo.
+
+
+
+
+Ejercicio 85. Calcule las siguientes complejidades del método quicksort:
+1. Caso mejor.
+2. Caso peor.
+3. Caso promedio.
+
+1.O(log n*n)
+2.O(n^2)
+3.O(log n*n)
+
+Ejercicio 86. ¿Qué significa que el quicksort no es estable?
+
+Un algoritmo de ordenamiento es estable si mantiene el orden relativo de los elementos con claves iguales. 
+Podemos perder el orden en el que se nos ha entregado dos elementos iguales.
+
+
+
+Ejercicio 87. Para cada uno de los siguientes arrays, muestre su contenido a través de los diferentes pasos para los algoritmos de 
+inserción directa, Mergesort y Quicksort.
+1. (5, 3, 4, 8, 1, 9).
+2. (1, 5, 2, 4, 7, 12, 10, 9).
+3. (1, 4, 7, 9, 2, 5, 8, 10).
+
+	Insercion directa				Mergesort						Quicksort
+	
+1.1 ([5], 3, 4, 8, 1, 9)		(5,3,4) (8,1,9)				(5, 3, 4, 1) (8, 9) pivote:5
+	
+1.2 ([5, 3], 4, 8, 1, 9)		(5) (3,4) (8) (1,9)			(3, 1) (5, 4) (8) (9) pivotes:3,8	
+
+1.3 ([3, 5, 4], 8, 1, 9)		(5) (3) (4) (8) (1) (9)		(1, 3) (4,5) (8,9)
+
+1.4 ([3, 4, 5, 8], 1, 9)		(5) (3,4) (8) (1,9)			(1,3,4,5) (8,9)
+
+1.5 ([3, 4, 5, 8, 1], 9)		(3,4,5) (1,8,9)				(1,3,4,5,8,9)
+
+1.6 ([3, 4, 5, 1, 8], 9)		(1,3,4,5,8,9)
+
+1.7 ([3, 4, 1, 5, 8], 9)
+
+1.8 ([3, 1, 4, 5, 8], 9)
+
+1.9  (1, 3, 4, 5, 8, 9)
+
+
+
+
+
+Ejercicio 88. Se pide calcular el límite inferior de la complejidad de los
+algoritmos de ordenación basados en comparaciones.
+
+Es O(log n * n). No se puede calcular con un algoritmo de menor complejidad.
+
+Ejercicio 89. Explique qué algoritmos de ordenación utiliza Java y en qué casos.
+
+Para objetos java usa TimSort. Para tipos primitivos un tipo especial llamado Dual-pivot Quicksort.
