@@ -1,0 +1,176 @@
+Ejercicio 93. Defina los términos árbol y árbol binario, y explique aplicaciones de ambas estructuras.
+
+Ambas estructuras son jerarquicas compuestas por nodos y aristas donde se induce una relacion padre-hijo. La
+diferencia radica en como el arbol binario puede tener como maximo dos hijos.
+
+Ejercicio 94. Simule la inserción en un árbol binario de los siguientes elementos: 2, 1, 3, 8, 5, 2.
+
+     2
+    / \
+   1   3				Si no se permiten duplicados. Se inserta el 2, menores a la izquierda, moyres derecha. como 8>2 y >3 se situa a la derecha
+          \
+           8
+          /
+         5
+
+
+Ejercicio 95. Explique qué reglas se siguen para borrar un elemento de un árbol binario
+
+Si no tiene hijos se elimina el nodo. Si tiene un hijo este ocupa su lugar y se recalcula la eliminacion del hijo.
+
+Si tiene dos hijos el mayor de los dos ocupa el lugar y se recalcula la eliminacion del hijo.
+
+
+Ejercicio 96. Sea el siguiente código que implementa un árbol binario (la
+mayor parte del código ha sido tomado de:
+
+
+	1.Mostrar el resultado del siguiente método y dibujar cómo está estructurado el árbol:
+
+	2. El análisis de complejidad temporal asintótico de cada uno de los métodos públicos que aparecen en el ejercicio.
+
+
+
+
+
+
+
+
+
+Ejercicio 97. Explique qué es un árbol rojo-negro y qué propiedades debe satisfacer.
+
+Un árbol rojo-negro es un tipo de árbol binario de búsqueda auto-balanceado que se utiliza en estructuras de datos 
+para mantener el equilibrio del árbol y asegurar operaciones eficientes como búsqueda, inserción y eliminación en tiempo logarítmico.
+
+1.Cada nodo es rojo o negro.
+
+2.La raíz siempre es negra.
+
+3.Todas las hojas (nodos nulos o NULL) son negras.
+
+4.Si un nodo es rojo, entonces sus hijos deben ser negros.
+(No puede haber dos nodos rojos consecutivos en un camino, es decir, no puede haber un nodo rojo con un padre rojo.)
+
+5.Todo camino desde un nodo dado hasta sus hojas descendientes nulas debe contener el mismo número de nodos negros.
+(Esto se conoce como la "altura negra".)
+
+
+
+Ejercicio 98. Explique mediante ejemplos cómo se realiza la inserción de un elemento en un árbol rojo-negro.
+
+ el nuevo nodo como en un árbol binario de búsqueda (siempre rojo).
+
+Si el padre es negro, se termina.
+
+Si el padre es rojo:
+
+Si el tío también es rojo: recolorear.
+
+Si el tío es negro: rotar y recolorear.
+
+Asegurar que la raíz sea negra al final.
+
+
+10,20,30
+
+1)10N
+
+2)10N
+	\
+	  20R
+	  
+	  
+3)10N															20N
+	\														  /     \
+	  20R			-> se recoloca a ->  					10R		30R
+		\
+		30R
+	  
+
+
+Ejercicio 99. Explique cómo se realiza el borrado de un nudo rojo en árbol rojo-negro.
+
+Cuando eliminamos un nodo rojo en un árbol rojo-negro, no se afectan las propiedades principales del árbol rojo-negro.
+ La razón es que las propiedades clave del árbol, como el número de nodos negros en el camino a las hojas o la regla de 
+ no tener dos nodos rojos consecutivos, no se violan. En este caso, el ajuste posterior no es necesario, 
+ ya que la eliminación de un nodo rojo no cambia la cantidad de nodos negros en los caminos.
+
+Buscar el nodo rojo a eliminar:
+
+Realizar la búsqueda del nodo rojo como en cualquier árbol binario de búsqueda.
+
+Eliminar el nodo:
+
+Si el nodo rojo tiene hijos, se reemplaza por el hijo adecuado (como en un árbol binario de búsqueda común). 
+Dado que el nodo a eliminar es rojo, no se requiere hacer ninguna reestructuración o ajuste adicional de colores.
+
+Ajustar el árbol si es necesario:
+
+En el caso de que el nodo rojo a eliminar no tenga hijos (si es una hoja o tiene un único hijo), simplemente se elimina el nodo 
+y el árbol mantiene sus propiedades sin necesidad de recolorear o realizar rotaciones.
+
+
+
+
+Ejercicio 100. Explique qué es un set y cómo puede implementarse mediante un árbol binario.
+
+Un set es una estructura de datos que almacena elementos únicos, sin duplicados, permitiendo búsquedas eficientes. 
+Se puede implementar con un árbol binario de búsqueda (BST), donde cada nodo guarda un valor y se ordena de forma que 
+los elementos menores van a la izquierda y los mayores a la derecha. Esto permite operaciones como inserción, eliminación y búsqueda
+ en O(log n) si el árbol está balanceado.
+
+
+Ejercicio 101. Explique qué es un map y cómo puede implementarse mediante un árbol binario.
+
+Un map (o diccionario) es una estructura de datos que almacena pares clave-valor, permitiendo búsquedas eficientes por clave.
+ Se puede implementar con un árbol binario de búsqueda (BST), donde cada nodo almacena una clave (ordenada) y su valor asociado.
+ Las inserciones y búsquedas siguen el orden del BST: claves menores a la izquierda y mayores a la derecha, garantizando 
+ operaciones en tiempo O(log n) si el árbol está balanceado. Ejemplos son TreeMap en Java o map en C++ 
+
+
+
+Ejercicio 102. El propósito del presente ejercicio es mostrar la aplicación de los set y los map a un problema real. Se pide implementar un validador
+de doble máster siguiendo los pasos que se muestran a continuación (cree los paquetes que considere oportunos para organizar las diferentes clases):
+
+1. Cree la clase Asignatura de tal forma que permita que cualquier asignatura tenga un identificador, un nombre, el número de semestre en
+que se imparte y el número de créditos ECTS.
+
+
+2. Cree la clase Master de tal forma que permita que cualquier máster tenga un identificador, un nombre y un conjunto de asignaturas.
+
+
+3. Heredando de la clase Master, cree la clase DobleMaster de tal forma que permita que cualquier doble máster tenga un identificador, un
+nombre, un conjunto de asignaturas, una relación con los dos máster que engloba, y una serie de mappings entre sus asignaturas y las
+asignaturas de los dos máster simples.
+
+
+4. Añada a la clase DobleMaster una tabla de convalidaciones entre asignaturas de los máster simples.
+
+
+5. Utilizando la técnica de TDD, complete la clase DobleMaster con un método que permita validar cualquier doble máster según las reglas
+que se muestran a continuación:
+a) Cobertura del máster 1: para toda asignatura del máster 1, bien pertence el conjunto de asignaturas del doble máster, bien tiene
+una equivalencia con alguna asignatura del doble máster.
+b) Cobertura del máster 2 (análogo al paso anterior).
+c) Precisión del doble máster: para toda asignatura del doble máster,bien pertenece al máster 1 bien pertenece al máster 2.
+d) Secuenciación correcta: no se da el caso de que una asignatura aparezca en distinto semestre en un máster simple y en el máster doble
+
+Ejercicio 103. Explique cómo implementaría un árbol en que cada nudo puede tener más de dos hijos.
+
+La forma más directa es que cada nodo contenga una lista (array, vector o lista enlazada) de sus hijos.
+
+Ejercicio 104. Averigüe cómo JDOM estructuraría en forma de árbol el siguiente fragmento de HTML:
+
+Documento (nivel raíz)
+└── Elemento TABLE
+    └── Elemento TBODY
+        ├── Elemento TR
+        │   ├── Elemento TD
+        │   │   └── Texto: "Shady Grove"
+        │   └── Elemento TD
+        │       └── Texto: "Aeolian"
+        └── Elemento TR
+            ├── Elemento TD
+            │   └── Texto: "Over the River, Charlie"
+            └── Elemento TD
+                └── Texto: "Dorian"
