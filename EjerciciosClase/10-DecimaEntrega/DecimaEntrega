@@ -144,32 +144,6 @@ Un map (o diccionario) es una estructura de datos que almacena pares clave-valor
 
 
 
-Ejercicio 102. El propósito del presente ejercicio es mostrar la aplicación de los set y los map a un problema real. Se pide implementar un validador
-de doble máster siguiendo los pasos que se muestran a continuación (cree los paquetes que considere oportunos para organizar las diferentes clases):
-
-1. Cree la clase Asignatura de tal forma que permita que cualquier asignatura tenga un identificador, un nombre, el número de semestre en
-que se imparte y el número de créditos ECTS.
-
-
-2. Cree la clase Master de tal forma que permita que cualquier máster tenga un identificador, un nombre y un conjunto de asignaturas.
-
-
-3. Heredando de la clase Master, cree la clase DobleMaster de tal forma que permita que cualquier doble máster tenga un identificador, un
-nombre, un conjunto de asignaturas, una relación con los dos máster que engloba, y una serie de mappings entre sus asignaturas y las
-asignaturas de los dos máster simples.
-
-
-4. Añada a la clase DobleMaster una tabla de convalidaciones entre asignaturas de los máster simples.
-
-
-5. Utilizando la técnica de TDD, complete la clase DobleMaster con un método que permita validar cualquier doble máster según las reglas
-que se muestran a continuación:
-a) Cobertura del máster 1: para toda asignatura del máster 1, bien pertence el conjunto de asignaturas del doble máster, bien tiene
-una equivalencia con alguna asignatura del doble máster.
-b) Cobertura del máster 2 (análogo al paso anterior).
-c) Precisión del doble máster: para toda asignatura del doble máster,bien pertenece al máster 1 bien pertenece al máster 2.
-d) Secuenciación correcta: no se da el caso de que una asignatura aparezca en distinto semestre en un máster simple y en el máster doble
-
 Ejercicio 103. Explique cómo implementaría un árbol en que cada nudo puede tener más de dos hijos.
 
 La forma más directa es que cada nodo contenga una lista (array, vector o lista enlazada) de sus hijos.
