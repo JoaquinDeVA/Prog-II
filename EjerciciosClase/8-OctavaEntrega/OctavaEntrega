@@ -6,20 +6,39 @@ Usa el propio valor numerico que representa.
 
 Ejercicio 107. Explique qué función hash utiliza Java para objetos de la clase String.
 
+Java utiliza una función hash basada en los caracteres del String: s[0]*31ⁿ⁻¹ + s[1]*31ⁿ⁻² + ... + s[n-1]. 
+Esto produce una buena distribución y es rápida de calcular.
 
-Ejercicio 108. Explique cómo puede implementarse un map mediante hashing
+Ejercicio 108. Explique cómo puede implementarse un map mediante hashing.
 
+Se usa un array donde las claves se convierten en índices usando hashCode(). 
+En caso de colisión, se usan listas o técnicas como open addressing.
 
 Ejercicio 109. Explique cómo puede implementarse un conjunto mediante hashing.
 
+Similar a un map, pero sólo se almacenan claves sin valores. El objeto se guarda según su hash,
+ y colisiones se gestionan con encadenamiento u otras técnicas.
 
 Ejercicio 110. Explique por qué Java aumenta el tamaño máximo de una tabla hash antes de que se llene.
 
+Para evitar muchas colisiones y mantener la eficiencia, Java amplía la tabla cuando se alcanza un cierto factor de carga (por defecto 0.75).
 
 Ejercicio 111. Explique por qué Java recoloca los elementos de una tabla hash cuando ésta aumenta de tamaño.
 
+Al cambiar el tamaño de la tabla, cambian los índices posibles, por lo que se deben recalcular las posiciones de todos los elementos.
 
 Ejercicio 112. Explique por qué es conveniente especificar el tamaño inicial de una HashSet o de un HashMap cuando se espera que éste sea grande.
 
+Para evitar redimensionamientos costosos y múltiples realojamientos de datos, es mejor definir un tamaño inicial cercano al esperado.
 
 Ejercicio 113. ¿Qué consecuencias tiene el no reescribir el método hashCode cuando se define un tipo de elemento para un HashSet o HashMap?
+Sin un hashCode() coherente con equals(), los objetos pueden no ser encontrados correctamente, causando errores lógicos y pérdida de rendimiento.
+
+
+
+
+
+
+
+4o
+
