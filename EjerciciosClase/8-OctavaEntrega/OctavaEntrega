@@ -32,6 +32,7 @@ Ejercicio 112. Explique por qué es conveniente especificar el tamaño inicial d
 Para evitar redimensionamientos costosos y múltiples realojamientos de datos, es mejor definir un tamaño inicial cercano al esperado.
 
 Ejercicio 113. ¿Qué consecuencias tiene el no reescribir el método hashCode cuando se define un tipo de elemento para un HashSet o HashMap?
+
 Sin un hashCode() coherente con equals(), los objetos pueden no ser encontrados correctamente, causando errores lógicos y pérdida de rendimiento.
 
 
@@ -39,6 +40,4 @@ Sin un hashCode() coherente con equals(), los objetos pueden no ser encontrados 
 
 
 
-
-4o
 
