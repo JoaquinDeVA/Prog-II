@@ -26,13 +26,28 @@ mayor parte del código ha sido tomado de:
 
 
 	1.Mostrar el resultado del siguiente método y dibujar cómo está estructurado el árbol:
+	
+ 1  2  2  3  5  8 
+2 1 5 8 3 2 
+
+        
+        ┌── 8
+        │   └── 5
+    ┌── 3
+    │   └── 2
+── 2
+    └── 1
 
 	2. El análisis de complejidad temporal asintótico de cada uno de los métodos públicos que aparecen en el ejercicio.
 
-
-
-
-
+La complejidad de los métodos depende de la altura del árbol (h).
+lookup e insert, en promedio, operan en O(log n) si el árbol está balanceado, y en el peor caso en O(n) si está desbalanceado.
+size, maxDepth, toString, equals y printPostorder recorren todos los nodos, por lo tanto su complejidad es O(n) tanto en el caso promedio 
+como en el peor.
+minValue solo sigue el camino más a la izquierda, lo que implica un tiempo O(h), es decir, O(log n) en promedio y O(n) en el peor caso.
+En resumen, los métodos de recorrido son siempre lineales, y los de búsqueda/inserción dependen del equilibrio del árbol.
+Balancear el árbol (por ejemplo, usando AVL o Red-Black Trees) garantiza eficiencia logarítmica.
+Sin balanceo, el rendimiento puede degradarse a lineal en el peor caso.
 
 
 
