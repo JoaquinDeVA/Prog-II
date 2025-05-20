@@ -28,6 +28,7 @@ public class BinaryTree {
         if(root == null){
 
             root = new Node(identifier,lineNumber);
+            return;
         }
 
         int x = root.indentificador.compareTo(identifier);
@@ -42,7 +43,7 @@ public class BinaryTree {
         }
         if( x == 0){
             
-            root.lineas.add(lineNumber);
+            root.lineas.add(lineNumber);    
         }
     }
     

@@ -29,7 +29,7 @@ public class Main {
                 procesarLinea(line, numero, arbol);
                 numero++;
             }
-
+            System.out.println();
             arbol.inOrderTraversal();
 
         } catch (IOException e) {
@@ -42,10 +42,12 @@ public class Main {
 
         int i=0;
 
+        System.out.println(lineNumber + " -> " + line);
+
         while(i<line.length()){
             char c = line.charAt(i);
 
-            if( c == '_' || c== '$' || (c >= 'a' && c<= 'z') || (c>= 'A' && c<= 'Z')){
+            if( c == '_' || c== '$' || Character.isLetter(c)){
 
                 StringBuilder sb = new StringBuilder();
                 sb.append(c);
@@ -56,7 +58,7 @@ public class Main {
                     
                     c = line.charAt(i);
 
-                    if(c == '_' || c== '$' || (c >= 'a' && c<= 'z') || (c<= 'A' && c>= 'Z') || (c>= '0' && c<= '9')){
+                    if(c == '_' || c== '$' || Character.isLetter(c)|| (c>= '0' && c<= '9')){
 
                             sb.append(c);
                             i++;
