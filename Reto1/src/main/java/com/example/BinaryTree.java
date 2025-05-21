@@ -49,19 +49,19 @@ public class BinaryTree {
     
     public void inOrderTraversal(){
 
-        if( root.izq.root != null){
+        if( root != null){
             
             root.izq.inOrderTraversal();
-        }
+        
         System.out.print(root.indentificador + " -> " + root.lineas.get(0));
         
         for(int i=1;i<root.lineas.size();i++){
             
             System.out.print( ", " + root.lineas.get(i));
         }
-        System.out.println("");
+        System.out.println();
 
-        if( root.der.root != null){
+   
             
             root.der.inOrderTraversal();
         }

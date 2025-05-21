@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Grafo {
 
-    public static class Arista {
+    private static class Arista {
 
         private String destino;
         private int distancia;
@@ -22,7 +22,7 @@ public class Grafo {
             return destino;
         }
     }
-
+    //Falta añadir el array de vertices
     private Map<String, List<Arista>> adyacencia;
 
     public Grafo() {

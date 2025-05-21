@@ -56,14 +56,13 @@ public class CaminoMinimo {
         for (int i = 0; i < vertices.size(); i++) {
             String vertice = vertices.get(i);
 
-            if (!visitados.contains(vertice) && !vertice.equals(actual)) {
-                int costoIntermedio = grafo.coste(vertice, actual);
-                if (costoIntermedio < Integer.MAX_VALUE) {
-                    int nuevaDistancia = costoIntermedio + distancias.get(indiceMin);
-                    if (nuevaDistancia < distancias.get(i)) {
-                        distancias.set(i, nuevaDistancia);
-                        camino.set(i, actual);
-                    }
+            int costoIntermedio = grafo.coste(vertice, actual);
+            
+            if (costoIntermedio < Integer.MAX_VALUE) {
+                int nuevaDistancia = costoIntermedio + distancias.get(indiceMin);
+                if (nuevaDistancia < distancias.get(i)) {
+                    distancias.set(i, nuevaDistancia);
+                    camino.set(i, actual);
                 }
             }
         }

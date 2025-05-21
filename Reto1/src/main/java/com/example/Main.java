@@ -42,7 +42,7 @@ public class Main {
 
         int i=0;
 
-        System.out.println(lineNumber + " -> " + line);
+        System.out.println(lineNumber + ": " + line);
 
         while(i<line.length()){
             char c = line.charAt(i);
