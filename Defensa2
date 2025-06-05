@@ -1,0 +1,95 @@
+public class ArbolBinario{
+
+	private class Nodo{
+
+		public int numero;
+		public ArbolBinario izq;
+		public ArbolBinario Der;
+		
+		public Nodo(int numero){
+		
+			this.numero = numero;
+			izq = new ArbolBinario();
+			der = new ArbolBinario();
+		}
+	}
+
+	private nodo root;
+
+	public void añadir(int numero){
+		
+		if(root == null){
+		
+			root = new Nodo(numero);
+		}
+		
+		if(root.numero > numero){   // compareTo > 0
+		
+			root.izq.añadir(numero);
+		}
+		
+		if(root.numero < numero) {
+		
+			root.der.añadir(numero);
+		}
+		
+		
+	
+	}
+
+	public void recorrerInOrden(){
+		
+		if( root != null){
+		
+			root.izq.recorrerInOrden();
+			System.out.println(root.numero + ", ");
+			root.der.recorrerInOrden();
+		}
+	}
+
+	public boolean eliminar(int numero){
+	
+		if( root == null){
+		
+			return false;
+		}
+		
+		if(root.numero > numero){
+			
+			root.izq.eliminar(numero);
+		}
+		if(root.numero < numero){
+			
+			root.der.eliminar(numero);
+		}
+		
+		else{					// if(root.numero == numero)
+		
+			if(root.der == null && root.izq == null){
+				root = null;
+			}else if(root.der == null){
+				root = root.izq;
+			}else if(root.izq == null){
+				root = root.der;
+			}else{
+				
+				Node aux = root.der.root;
+				
+				while(aux.izq.root != null){
+					
+					aux = aux.izq.root;
+				}
+				
+				root.numero = aux.numero;
+				aux.eliminar(aux.numero);
+				}
+				
+			return true;
+			}
+		}
+	
+	}
+
+
+
+}

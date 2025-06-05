@@ -19,77 +19,119 @@ public class CaminoMinimo {
 
    public void calcularYMostrarCaminoMinimo(String inicio, String fin, Grafo grafo) {
 
-    ArrayList<String> vertices = new ArrayList<>(grafo.vertices());
-    ArrayList<Integer> distancias = new ArrayList<>();
-    ArrayList<String> camino = new ArrayList<>();
-    ArrayList<String> visitados = new ArrayList<>();
+        ArrayList<String> vertices = new ArrayList<>(grafo.vertices());
+        ArrayList<Integer> distancias = new ArrayList<>();
+        ArrayList<String> camino = new ArrayList<>();
+        ArrayList<String> visitados = new ArrayList<>();
 
-    // Inicialización: distancia desde cada vértice al destino (fin)
-    for (String vertice : vertices) {
-        int costo = grafo.coste(vertice, fin);
-        distancias.add(costo);
-        camino.add(fin); // Suponemos inicialmente que todos llegan a fin directamente
-    }
+        // Inicialización: distancia desde cada vértice al destino (fin)
+        for (String vertice : vertices) {
+            int costo = grafo.coste(vertice, fin);
+            distancias.add(costo);
+            camino.add(fin); // Suponemos inicialmente que todos llegan a fin directamente
+        }
 
-    // Algoritmo de camino mínimo inverso (hacia el destino)
-    while (visitados.size() != vertices.size()) {
-        int indiceMin = -1;
-        int valorMin = Integer.MAX_VALUE;
+        // Algoritmo de camino mínimo inverso (hacia el destino)
+        while (visitados.size() != vertices.size()) {
+            int indiceMin = -1;
+            int valorMin = Integer.MAX_VALUE;
 
-        // Encontrar el vértice no visitado con menor distancia al destino
-        for (int i = 0; i < vertices.size(); i++) {
-            if (!visitados.contains(vertices.get(i)) && distancias.get(i) < valorMin) {
-                valorMin = distancias.get(i);
-                indiceMin = i;
+            // Encontrar el vértice no visitado con menor distancia al destino
+            for (int i = 0; i < vertices.size(); i++) {
+                if (!visitados.contains(vertices.get(i)) && distancias.get(i) < valorMin) {
+                    valorMin = distancias.get(i);
+                    indiceMin = i;
+                }
             }
-        }
 
-        if (indiceMin == -1){ // Todos los vértices restantes son inaccesibles
+            if (indiceMin == -1){ // Todos los vértices restantes son inaccesibles
 
-         break; 
-        }
+            break; 
+            }
 
-        String actual = vertices.get(indiceMin);
-        visitados.add(actual);
+            String actual = vertices.get(indiceMin);
+            visitados.add(actual);
 
-        // Para todos los demás vértices, verificar si mejora el camino pasando por 'actual'
-        for (int i = 0; i < vertices.size(); i++) {
-            String vertice = vertices.get(i);
+            // Para todos los demás vértices, verificar si mejora el camino pasando por 'actual'
+            for (int i = 0; i < vertices.size(); i++) {
+                String vertice = vertices.get(i);
 
-            int costoIntermedio = grafo.coste(vertice, actual);
-            
-            if (costoIntermedio < Integer.MAX_VALUE) {
-                int nuevaDistancia = costoIntermedio + distancias.get(indiceMin);
-                if (nuevaDistancia < distancias.get(i)) {
-                    distancias.set(i, nuevaDistancia);
-                    camino.set(i, actual);
+                int costoIntermedio = grafo.coste(vertice, actual);
+                
+                if (costoIntermedio < Integer.MAX_VALUE) {
+                    int nuevaDistancia = costoIntermedio + distancias.get(indiceMin);
+                    if (nuevaDistancia < distancias.get(i)) {
+                        distancias.set(i, nuevaDistancia);
+                        camino.set(i, actual);
+                    }
                 }
             }
         }
-    }
 
-    // Mostrar resultados para el nodo de inicio
-    int posInicio = vertices.indexOf(inicio);
-    int distanciaTotal = distancias.get(posInicio);
+        // Mostrar resultados para el nodo de inicio
+        int posInicio = vertices.indexOf(inicio);
+        int distanciaTotal = distancias.get(posInicio);
 
-    if (distanciaTotal == Integer.MAX_VALUE) {
-        System.out.println("No existe un camino desde " + inicio + " a " + fin);
-    } else {
-        System.out.println("Distancia mínima desde " + inicio + " a " + fin + ": " + distanciaTotal);
+        if (distanciaTotal == Integer.MAX_VALUE) {
+            System.out.println("No existe un camino desde " + inicio + " a " + fin);
+        } else {
+            System.out.println("Distancia mínima desde " + inicio + " a " + fin + ": " + distanciaTotal);
 
-        // Reconstruir el camino desde 'inicio' hasta 'fin'
-        ArrayList<String> ruta = new ArrayList<>();
-        String paso = inicio;
+            // Reconstruir el camino desde 'inicio' hasta 'fin'
+            ArrayList<String> ruta = new ArrayList<>();
+            String paso = inicio;
 
-        while (!paso.equals(fin)) {
-            ruta.add(paso);
-            int idx = vertices.indexOf(paso);
-            paso = camino.get(idx);
+            while (!paso.equals(fin)) {
+                ruta.add(paso);
+                int idx = vertices.indexOf(paso);
+                paso = camino.get(idx);
+            }
+            ruta.add(fin);
+
+            System.out.println("Camino: " + String.join(" -> ", ruta));
         }
-        ruta.add(fin);
 
-        System.out.println("Camino: " + String.join(" -> ", ruta));
+       
     }
-}
+
+
+
+    public ArrayList<ArrayList<Integer>> floyd(Grafo grafo) {
+        
+        ArrayList<String> vertices = new ArrayList<>(grafo.vertices());
+        int n = vertices.size();
+
+        // Inicializar matriz de distancias
+        ArrayList<ArrayList<Integer>> dist = new ArrayList<>();
+        
+        for (int i = 0; i < n; i++) {
+            ArrayList<Integer> fila = new ArrayList<>();
+            for (int j = 0; j < n; j++) {
+                if (i == j) {
+                    fila.add(0);
+                } else {
+                    int coste = grafo.coste(vertices.get(i), vertices.get(j));
+                    fila.add(coste);
+                }
+            }
+            dist.add(fila);
+        }
+
+        // Algoritmo de Floyd-Warshall
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    int ik = dist.get(i).get(k);
+                    int kj = dist.get(k).get(j);
+                    int ij = dist.get(i).get(j);
+                    if (ik < Integer.MAX_VALUE && kj < Integer.MAX_VALUE && ik + kj < ij) {
+                        dist.get(i).set(j, ik + kj);
+                    }
+                }
+            }
+        }
+
+        return dist;
+    }
 
 }
