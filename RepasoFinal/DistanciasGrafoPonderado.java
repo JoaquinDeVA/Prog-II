@@ -117,18 +117,16 @@ public class DistanciasGrafoPonderado {
 
 
             for(int j=0; j < n; j++){
-                
-                if(i == j){
-
-                    resulDistancia.add(0);
-                } else{
-                    resulDistancia.add(grafo.coste(vertices.get(i), vertices.get(j)));                    
-                }
+              
+                resulDistancia.add(grafo.coste(vertices.get(i), vertices.get(j)));                    
                 caminoInicial.add(vertices.get(j));
             }
+
             distancia.add(resulDistancia);
             camino.add(caminoInicial);
         }
+
+
 
         for(int k = 0; k < n; k++){
             for(int i = 0; i < n; i++){
@@ -140,12 +138,41 @@ public class DistanciasGrafoPonderado {
 
                     if(ik < Integer.MAX_VALUE && kj < Integer.MAX_VALUE && ik + kj < ij){
 
-                        distancia.get(i).set(j, ik +kj);
+                        distancia.get(i).set(j, ik + kj);
                         camino.get(i).set(j,vertices.get(k));
                     }
                 }
             }
         }
+
+        ArrayList<Integer> resultados = new ArrayList<>();
+
+        for( ArrayList<Integer> elemento : distancia){
+
+            int total = 0;
+            for(Integer distancia2 : elemento){
+                total = total + distancia2;
+            }
+
+            resultados.add(total);
+        }
+
+
+
+
+        int indice = -1;
+        int valorMin = Integer.MAX_VALUE;
+
+        for(int i = 0; i < n;i++){
+
+            if(resultados.get(i) < valorMin){
+
+                indice = i;
+                valorMin = resultados.get(i);
+            }
+        }
+
+
 
         if(distancia.get(vertices.indexOf(vertice1)).get(vertices.indexOf(vertice2)) == Integer.MAX_VALUE){
 
@@ -162,6 +189,8 @@ public class DistanciasGrafoPonderado {
             paso = camino.get(vertices.indexOf(paso)).get(vertices.indexOf(vertice2));
         }
         int distanciaFinal = distancia.get(vertices.indexOf(vertice1)).get(vertices.indexOf(vertice2));
+
+
 
         System.out.print("El recorrido de distancia: " + distanciaFinal + ", sigue la siguiente ruta: ");
         for(String v : recorrido){

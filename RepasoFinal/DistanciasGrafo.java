@@ -23,6 +23,7 @@ public class DistanciasGrafo {
         while(!cola.isEmpty()){
 
             String actual = cola.pop();
+            
 
             if(grafo.getAdyacentes(actual).contains(vertice2)){
 
@@ -56,6 +57,7 @@ public class DistanciasGrafo {
         }
         recorridoInver.add(vertice1);
 
+        
         ArrayList<String> resul = new ArrayList<>();
 
         while(!recorridoInver.isEmpty()){
